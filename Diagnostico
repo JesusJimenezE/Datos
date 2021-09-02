@@ -1,0 +1,73 @@
+package diano;
+
+import java.util.Scanner;
+/**
+ *
+ * @author kechu
+ */
+public class Diano {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+      
+        int n;
+                
+        System.out.print("Ingresa cel tamaño de la matriz: ");
+        n = teclado.nextInt();
+        
+        //1 ejercicio x
+        int y=(n-1);
+        for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){ //en estas dos lineas hace que nuestro programa escoja los lugares donde se colocara la los espacios y os "*"
+        if((i==j)||((i+j)==y)){ //en if else lo usamos para que sepa el programa que colocar en cada uno de los espacios
+        System.out.print("  *  "); //con esta linea hacemos que proyecte los "*" para formar la figura 
+        }
+        else{
+        System.out.print("     "); //en esta linea hace los espacios para que no se vea deforme nuestra fijura
+        }
+     
+        }System.out.println(); //es un salto de pantalla
+        }
+        
+        //2 ejercicio escalera
+        System.out.println("-----------------------------");//esta linea es para poder separar cada figura y no se vea desordenado
+        for (int i = 0; i < n; i++) { //en los dos linea le damos a entender al programa que en cada filas disminuya los "*"
+            for (int j = n-1-i; j>=0; j--) {
+                System.out.print("  *  ");
+            }
+            System.out.print("     ");
+            System.out.println();
+        }
+        
+        //3 ejercicio rectangulo
+            
+            System.out.println("-----------------------------");
+             //Linea superior
+            for(int i = 0; i < n; i++) { //pedimos que toda la linea se llene de "*"
+                System.out.print("  *  ");
+               
+            }
+            System.out.println();
+           
+             //centro de la forma
+            for(int i = 0; i < n-2; i++) { //en la linea podemos que la primea y la ultima linea horizontal este llena de "*"
+                System.out.print("  *  ");
+                for(int j = 0; j < n-2; j++) {//selecciona que todo lo del sentro este vacio 
+                    System.out.print("     ");
+                }
+                System.out.println("  *  ");
+            }
+           
+             //Linea inferior
+            for(int i = 0; i < n; i++) { //pedimos que la parte de abajo este lleno de "*"
+                System.out.print("  *  ");  
+          
+                }
+        System.out.println();
+}
+    }
+    
+
