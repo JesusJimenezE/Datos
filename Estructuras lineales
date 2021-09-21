@@ -1,0 +1,65 @@
+package estructuras;
+import java.util.Scanner;
+/**
+ *
+ * @author kechu
+ */
+public class Estructuras {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Scanner te = new Scanner(System.in); //aqui llamamos a la fucion que no ayuda a traducuir lo que escribimos para la compu
+        int o; //es la declacion de la variable que usaremos en el switch
+        char t = 0;//esta es la delcaraciond e la cariable para los lugares de la pila, se usa en ormato char, ya que si lo usamos in it nos saldria ciertos numeros
+        char[] pila = new char[26];//en esta variable ponemos el tipo de cual queremos que sea nuestra pila y us tamaña 
+        char[] alfa = new char[26];//en cuestion de esta variable es la que nos va ayudar a que se genere el abecedario y guarde en que letra bamos en el bucle 
+        alfa[0] = 'A';//aqui le decimos que esta variable tiene que iniciar a guardar con la letra A mayuscula
+        do {//este bucle do lo utilizamos para que el menu se puede usar mas de una vez y podamos ver los cmabios que se hacen 
+            System.out.println("1.- Llenar");//es el menu, para que puedan decidir que les gustaria hacer, mostrar, llenar, eliminar o salir
+            System.out.println("2.- Mostrar");
+            System.out.println("3.- Eliminar ");
+            System.out.println("4.- salir");
+            o = te.nextInt();//aqui decimos que lo que escribimos en el teclado lo guarde en la variable o 
+            switch (o) {////lo utilizamos para cada opcion del menu y que compare con lo que se guardo en o
+
+                case 1:
+                    if (t < 26) {//este if nos ayuda identificar si la pila aun tiene espacio para llenar con los datos 
+                        for (int i = 0; i <= 25; i++) {//con este bucle hacemos que la pila se llene a su limite  que le damos de i
+                            alfa[i] = (char) ('A' + i ) ;//en estas le decimos que a cada i que pase le de la letra que le toque 
+                            pila[t] =  alfa[i]; //esta sentencia nos ayuda que se guarde todo de forma exitosa en nuestra pila
+                            t++;//le pedimso que entre pase el bucle cambien de pisicon de la pila 
+                            
+                        } 
+                        System.out.print("Valores agregado\n");//le confirmamos al usuario que los datso ya se registraron 
+                    } 
+                    else {//se ocipa por si la pila este llena nos mande a la siguiente sentencia 
+                        System.out.println("Pila llena");//le damos a entender al usuario que la pila no tiene mas espacio
+                    }
+                    break;
+                case 2:
+                     if (t > 0) {//analiza si nos puede proyecta los datos 
+                         for (int i = t - 1; i >= 0; i--) {//va buscado cada espacio de la pila ocupado 
+                            System.out.println(" " + pila[i]); //nos proyecta que tiene los datos que estan ocupados 
+                     }
+                     }
+                     else {//es por si la pila esta vacia 
+                        System.out.println("Pila vacia");//nos muesta el mensaje para confirma que nohay ningun dato en la pila 
+                    }
+                    break;
+                case 3:
+                    if (t > 0) {//analiza si tiene algun dato nuesta pila
+                        System.out.println("El dato eliminado es:" + pila[t - 1]);//nos dice que dato fue elimindo 
+                        t--;//queita del espacio es daot que se elimino 
+                    } 
+                    else {//es por si la pila esta vacia 
+                        System.out.println("Pila vacia");//nos muesta el mensaje para confirma que nohay ningun dato en la pila 
+                    }
+                    break;
+            }
+
+        } while (o != 4);//le comentamos que is variable o es igual o distinta a 4 cierre el ciclo en ese moemento
+    }
+
+}
