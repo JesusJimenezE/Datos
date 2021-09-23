@@ -1,0 +1,75 @@
+package abc;
+import java.util.Scanner;
+import java.util.Random;
+/**
+ *
+ * @author kechu
+ */
+public class Abc {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Random randon = new Random();
+        Scanner sc = new Scanner(System.in);
+        int tope = 0, opt = 0;
+        char[] pila = new char[26];
+        char car;
+        int con =0;
+        do {
+            System.out.println("1 - Llenar\n"
+                    + "2 - Eliminar\n"
+                    + "3 - Mostrar\n"
+                    + "4 - Duplicaods\n"
+                    + "5 - Salir\n");
+            switch (opt = sc.nextInt()) {
+                case 1:
+                    char letra = 'A';
+                    for (int i = 0; i < 26; i++) {
+                        if (tope < 26) {
+                            pila[tope] = letra =(char) (randon.nextInt(90-65+1)+65);
+                            letra++;
+                            tope++;
+                        } else {
+                            System.out.println("Pila llena....");
+                            break;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (tope > 0) {
+                        System.out.println("Dato eliminado..." + tope);
+                        tope--;
+                    } else {
+                        System.out.println("No hay elementos para eliminar....");
+                    }
+                    break;
+                case 3:
+                    if (tope > 0) {
+                        for (int i = tope - 1; i >= 0; i--) {
+                            System.out.println(" " + pila[i]);
+                        }
+                    } else {
+                        System.out.println("Pila vacia....");
+                    }
+                    break;
+                case 4:
+                    for (int i = 0; i < tope; i++){//se le pide que todo este ciclo se repitas hasta que se llegue el tope establecido
+                        car = pila[i];//esta sentencia se crea para poder crear una copia de nuestra pila y se pueda comparar 
+                        for (int j=0; j<tope; j++){//pedimos que se repita este ciclo hata llegar al tope 
+                            if(pila[j] == car){//aqui nos dice que si la letra es igual entre las dos pilas y hace el conteo de cuantas veces se repite 
+                                con++;//nos ayuda a tener la cuenta de cuantas veces se repite 
+                            }
+                        }
+                        if (con>1){//le decimos que si nada mas aparece una vez no lo imprima 
+                        System.out.println(pila[i] + " aparece  " + con + " veces");////hacemos que se imprima la letra y cada vez que se repite 
+                        }
+                        con=0;//regresamos la cuneta de letra a 0 pera que siga con una mas 
+                    }
+                    break;
+            }
+        } while (opt != 5);
+    }
+    
+}
