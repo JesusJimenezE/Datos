@@ -1,0 +1,79 @@
+package estructuras.lineales;
+
+import java.util.Scanner;
+import java.util.Random;
+/**
+ *
+ * @author kechu
+ */
+public class EstructurasLineales {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Random random = new Random();   //Llamamos la varible para la fuente random
+        Scanner sc = new Scanner(System.in);    //Es para que se puede traducir lo que escribimos en el teclado
+        int top = 0, o, t;    //son variables numericas para el menu y el tope de la pila
+        System.out.println("Ingresar el tamaño de las pilas A y B");    //Usamos este para que se proyecte en la pantalla el mensaje
+        t = sc.nextInt();   //Pedimos que se guarde lo que escribimos en la variable t, siendo el tamaño de las pilas
+        int pilaA[] = new int[t];   //Creamos las pilas que se usaremos en el programa
+        int pilaB[] = new int[t];
+        int pilaC[] = new int[t];
+        do {
+            System.out.println("1 - Llenar pila A y pila B\n");     //Con estas lineas hacemos que se proyecte todas las opciones del menu 
+            System.out.println("2 - Mostrar pilas A y B\n");
+            System.out.println("3 - Unir pilas\n");
+            System.out.println("4 - Vaciar pilas\n");
+            System.out.println("5 - Mostrar pila C\n");
+            System.out.println("6 - Salir\n");
+            switch (o = sc.nextInt()) { //activamos el switch, tomando como variable nuerico 'o'
+                case 1: //este caso lo usamos para poder llenar las pilas A y B
+                    System.out.println("Pila A y B llenas\n");    //Proyectamos el mensaje de que la opcion esta cumplida y lo hacemos antes del for para que no se repita el mensaje por el ciclo
+                    for (int i = 0; i < t; i++) {   //El ciclo lo usamos para que se se llene la plina y pedimos que se hasta que se repita las mismas veces que el tamaño de la pila
+
+                        pilaA[i] = random.nextInt(100);     //Usamos esta linea para que se tome su lugar el dato random que no puede pasar el numero 100, hasta que se llene la pila A
+                    }
+                    for (int i = 0; i < t; i++) {   //El ciclo lo usamos para que se se llene la plina y pedimos que se hasta que se repita las mismas veces que el tamaño de la pila
+                        pilaB[i] = random.nextInt(200 - 100 + 1) + 100;  //Usamos esta linea para que se tome su lugar el dato random que no puede pasar el numero 100, hasta que se llene la pila A
+                    }
+                    break;
+                case 2:     //Este caso se usa para que se proyecte la pila A y B
+                    //if (t > 0) {        //Pedimos que cheque si hay datos en la pila 
+                    System.out.println("Pila A:\n");      //Proyectamos cual pila es la que se va a mostrar
+                    for (int i = t - 1; i >= 0; i--) {      //Pedimos que se repita la accion de hata que llegue el limite de la pila
+                        System.out.println(" " + pilaA[i]);     //Se va pasando por los lugares de la pila y cada lugar se proyecte
+                    }
+                    System.out.println("Pila B:\n");      //Proyectamos cual pila es la que se va a mostrar
+                    for (int i = t - 1; i >= 0; i--) {      //Pedimos que se repita la accion de hata que llegue el limite de la pila
+                        System.out.println(" " + pilaB[i]);     //Se va pasando por los lugares de la pila y cada lugar se proyecte
+                        // }
+                    }
+                    //else {      //Se pasa si no hay datos en las dos pilas
+                    //    System.out.println("Pila vacia\n");       //Proyectamos que la pla no tiene dato que mostrar 
+                    //}
+                    break;
+                case 3:     //Se sua para que las dos pilas su unan en base de una suma de cada lugar de las dos pilas
+                    System.out.println("Pilas unidas\n");     //Pedimos que proyecte el mensaje para esta opcion del menu
+                    for (int i = t - 1; i >= 0; i--) {      //Es un codigo que no aydua a que la suma se haga en cada lugra hasta que se acabe los datos
+                        pilaC[top] = pilaA[i] + pilaB[i];      //La suma de cada dato se guarde en la trecera pila 
+                        top++;     //Se usa para que tengamos el control de cada espacio de esta pila
+                    }
+                    break;
+                case 4:     //Este case lo sumamos para borrar los datos
+                    System.out.println("Pilas vacia\n");      //Mostramos que la accion esta echa 
+                    for (int i = t - 1; i >= 0; i--) {      //Es un codigo que no aydua a que la suma se haga en cada lugra hasta que se acabe los datos
+                        t--;        //Hacemos que se borre cala lugar de los datos 
+                    }
+                    break;
+                case 5:     //Utilizamos el case para que mostremos los datos que tiene la pila C
+                    System.out.println("Pila C:\n");      //Proyectamos cual pila es la que se va a mostrar
+                    for (int i = t - 1; i >= 0; i--) {      //Pedimos que se repita la accion de hata que llegue el limite de la pila
+                        System.out.println(" " + pilaC[i]);     //Se va pasando por los lugares de la pila y cada lugar se proyecte
+                    }
+                    break;
+            }
+        } while (o != 6);       //Esta sentencia se usa para que se pueda cerrar la ejecucion
+    }
+    
+}
