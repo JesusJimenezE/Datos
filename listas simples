@@ -1,0 +1,67 @@
+package suge;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author kechu
+ */
+public class Suge {
+
+    static int opt=0;
+static Nodo temp=null;
+        static Nodo inicio= null;
+
+    static class Nodo{ //Es la clase donde se muestra 
+        String Nombre; //declaramos donde vamos a guardar la informacion
+        Nodo sig; //declaramos el ensale que unira la informacion 
+        private String name;
+        
+    }
+
+public static void mostrar(String name, Nodo inicio) { //Es la clase donde se muestra 
+        System.out.println(name + " ");
+        while (inicio != null) {
+            System.out.print(inicio.Nombre + " \n");
+            inicio = inicio.sig;
+        }
+    }
+
+    public static void add() { //es la clase que hace la funcion de agregar un dato a la lista 
+        Scanner sc = new Scanner(System.in);
+        if (inicio == null) { //se utilisa el if, else, para que podamos tener un incio y continuidad 
+            inicio = new Nodo();
+            System.out.println("Ingresar dato\n");
+            inicio.Nombre = sc.nextLine();
+            inicio.sig = null;
+
+        } else {
+            Nodo tem;
+            tem = new Nodo();
+            System.out.println("Ingresar dato\n");
+            tem.Nombre = sc.nextLine();
+            tem.sig = inicio;
+            inicio = tem;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int o = 0;
+        do {//se crea este bucle para que el menu se cree hasta que usuario quiera terminar el uso
+            System.out.println("1 - Agregar\n");
+            System.out.println("2 - Mostrar\n");
+            System.out.println("3 - Salir\n");
+            switch (o = sc.nextInt()) { //usamos el metodo switch para que podamos hablar a cada clae que se requiera 
+                case 1:
+                    add(); //hablamos a la clase de agregar
+                    break;
+                case 2:
+                    mostrar(" ", inicio); //hablamos a la clase mostrar para realizar la accion de mostrar cada dato que se a guardado
+                    break;
+            }
+        } while (o != 3);
+
+    }
+}
+    
