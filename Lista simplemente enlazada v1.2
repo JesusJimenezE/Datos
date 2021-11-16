@@ -1,0 +1,83 @@
+package suge;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author kechu
+ */
+public class Suge {
+
+    static int o = 0;
+    static Nodo temp = null;
+    static Nodo inicio = null;
+
+    static class Nodo { //Es la clase donde se muestra 
+
+        String Nombre; //declaramos donde vamos a guardar la informacion
+        Nodo sig; //declaramos el ensale que unira la informacion 
+        private String name;
+
+    }
+
+    public static void mostrar(String name, Nodo inicio) { //Es la clase donde se muestra 
+        System.out.println(name + " ");
+        while (inicio != null) {
+            System.out.print(inicio.Nombre + " ");
+            inicio = inicio.sig;
+        }
+    }
+
+    public static void add() { //es la clase que hace la funcion de agregar un dato a la lista 
+        Scanner sc = new Scanner(System.in);
+        if (inicio == null) { //se utilisa el if, else, para que podamos tener un incio y continuidad como tambie el saber si es una lista sin datos o con datos
+            inicio = new Nodo();
+            System.out.println("Ingresar dato\n");
+            inicio.Nombre = sc.nextLine();
+            inicio.sig = null;
+
+        } else {
+            Nodo tem;
+            tem = new Nodo();
+            System.out.println("Ingresar dato\n");
+            tem.Nombre = sc.nextLine();
+            tem.sig = inicio;
+            inicio = tem;
+        }
+    }
+
+    public static void el(String name) { //esta es la clase para poder eliminar los datos de la lista 
+        Nodo tem; 
+        inicio = inicio; //declaramos que tenga los datos de a pila 
+        tem = new Nodo();
+        if (inicio.name == name) { //pedimos que si es el nombre y el inombre inicio se ejecute la siguiente condicion
+            if (inicio == inicio) { //pedimos que el inicio tenga un dato para que se ejecute el documento 
+                tem.Nombre = null;//Borra los datos guardados
+            }
+        }
+        inicio = inicio.sig;
+
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        do {//se crea este bucle para que el menu se cree hasta que usuario quiera terminar el uso
+            System.out.println("\n1 - Agregar\n");
+            System.out.println("2 - Mostrar\n");
+            System.out.println("3 - Eliminar\n");
+            System.out.println("4 - Salir\n");
+            switch (o = sc.nextInt()) { //usamos el metodo switch para que podamos hablar a cada clae que se requiera 
+                case 1:
+                    add(); //hablamos a la clase de agregar
+                    break;
+                case 2:
+                    mostrar(" ", inicio); //hablamos a la clase mostrar para realizar la accion de mostrar cada dato que se a guardado
+                    break;
+                case 3:
+                    el(""); //llamamos las clase para que se pueda elimar los datos 
+                    break;
+            }
+        } while (o != 4);
+
+    }
+}
