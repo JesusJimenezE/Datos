@@ -63,7 +63,7 @@ public class Suge {
     }
 
          public static String[] dom(int can){
-        String[] union=new String[can]; // declaramos la varible String con la que uniremos nuestras char
+        String[] z=new String[can]; // declaramos la varible String con la que uniremos nuestras char
         Random randon=new Random();
         //como algunas de las letras contienen mas variables fuera del codigo ASCII se deben de colocar manualmente en un Array
         char[] ca={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','X','Y','Z'};
@@ -80,13 +80,13 @@ public class Suge {
         
         for (int i = 0; i < can; i++) { // por la cantidad de caracteres igresaa en cada array se va a hacer uso del math.Random para un valor 
                                              // aleatorio dentro del String union
-			union[i] = ca[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+			z[i] = ca[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
 					+ ce[(int) (Math.random()*(64-1))+1]+" "
                                         + ci[(int) (Math.random()*(64-1))+1]+" "
                                         + co[(int) (Math.random()*(64-1))+1]+" "
                                         + cu[(int) (Math.floor(Math.random() * ((cu.length - 1) - 0 + 1) + 0))];
         }
-        return union;
+        return z;
 }
     public static void imprimir(String[] nombresGenerados){
         for (int i = 0; i < nombresGenerados.length; i++) {
@@ -113,7 +113,7 @@ public class Suge {
                 case 3:
                     el(""); //llamamos las clase para que se pueda elimar los datos 
                     break;
-                case 4:
+                case 4: 
                     l.imprimir(l.dom(1));
                     break;
             }
