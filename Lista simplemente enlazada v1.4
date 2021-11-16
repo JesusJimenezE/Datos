@@ -1,0 +1,152 @@
+package suge;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @author kechu
+ */
+public class Suge {
+
+    static int o = 0;
+    static Nodo temp = null;
+    static Nodo inicio = null;
+
+    static class Nodo { //Es la clase donde se muestra 
+
+        String Nombre; //declaramos donde vamos a guardar la informacion
+        Nodo sig; //declaramos el ensale que unira la informacion 
+        private String name;
+
+    }
+
+    public static void mostrar(String name, Nodo inicio) { //Es la clase donde se muestra 
+        System.out.println(name + " ");
+        while (inicio != null) {
+            System.out.print(inicio.Nombre + " ");
+            inicio = inicio.sig;
+        }
+    }
+
+    public static void add() { //es la clase que hace la funcion de agregar un dato a la lista 
+        Scanner sc = new Scanner(System.in);
+        if (inicio == null) { //se utilisa el if, else, para que podamos tener un incio y continuidad como tambie el saber si es una lista sin datos o con datos
+            inicio = new Nodo();
+            System.out.println("Ingresar dato\n");
+            inicio.Nombre = sc.nextLine();
+            inicio.sig = null;
+
+        } else {
+            Nodo tem;
+            tem = new Nodo();
+            System.out.println("Ingresar dato\n");
+            tem.Nombre = sc.nextLine();
+            tem.sig = inicio;
+            inicio = tem;
+        }
+    }
+
+    public static void el(String name) { //esta es la clase para poder eliminar los datos de la lista 
+        Nodo tem;
+        inicio = inicio; //declaramos que tenga los datos de a pila 
+        tem = new Nodo();
+        if (inicio.name == name) { //pedimos que si es el nombre y el inombre inicio se ejecute la siguiente condicion
+            if (inicio == inicio) { //pedimos que el inicio tenga un dato para que se ejecute el documento 
+                tem.Nombre = null;//Borra los datos guardados
+            }
+        }
+        inicio = inicio.sig;
+
+    }
+
+    public static String[] dom(int can) {
+        String[] z = new String[can]; // declaramos la varible String con la que uniremos nuestras char
+        Random randon = new Random();
+        //como algunas de las letras contienen mas variables fuera del codigo ASCII se deben de colocar manualmente en un Array
+        char[] ca = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z'};
+        char[] ce = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+            + 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z'
+            + 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        char[] ci = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+            + 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z'
+            + 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        char[] co = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'
+            + 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'X', 'Y', 'Z'
+            + 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        char[] cu = {'#', '$', '%', '&', '@',};
+
+        for (int i = 0; i < can; i++) { // por la cantidad de caracteres igresaa en cada array se va a hacer uso del math.Random para un valor 
+            // aleatorio dentro del String union
+            z[i] = ca[(int) (Math.floor(Math.random() * ((ca.length - 1) - 0 + 1) + 0))] + " "
+                    + ce[(int) (Math.random() * (64 - 1)) + 1] + " "
+                    + ci[(int) (Math.random() * (64 - 1)) + 1] + " "
+                    + co[(int) (Math.random() * (64 - 1)) + 1] + " "
+                    + cu[(int) (Math.floor(Math.random() * ((cu.length - 1) - 0 + 1) + 0))];
+        }
+        return z;
+    }
+
+    public static void imprimir(String[] nombresGenerados) {
+        for (int i = 0; i < nombresGenerados.length; i++) {
+            System.out.println(nombresGenerados[i]);
+        }
+    }
+
+    public static void bus() {
+        Scanner sc = new Scanner(System.in);
+        int con = 0;
+        Nodo temp = new Nodo();
+        Boolean Encontrar = false;
+        String valor;
+        System.out.println("Ingresar dato que buscas");
+        valor = sc.nextLine();
+        temp = inicio;
+        if (inicio != null) {
+            if (temp != null && Encontrar!= true ) {
+                if (temp.Nombre == valor) {
+                    Encontrar = true;
+                    con++;
+                    System.out.println("Dato encontrado");
+                }
+            } else {
+                temp.sig= temp.sig;
+                
+            }
+        } else {
+            System.out.println("Lista vacia");
+        }
+    }
+
+    public static void main(String[] args) {
+        Suge l = new Suge();
+        Scanner sc = new Scanner(System.in);
+        do {//se crea este bucle para que el menu se cree hasta que usuario quiera terminar el uso
+            System.out.println("\n1 - Agregar\n"
+                    + "2 - Mostrar\n"
+                    + "3 - Eliminar\n"
+                    + "4 - Palabras random\n"
+                    + "5 - Buscar\n"
+                    + "6 - Salir\n"
+            );
+            switch (o = sc.nextInt()) { //usamos el metodo switch para que podamos hablar a cada clae que se requiera 
+                case 1:
+                    add(); //hablamos a la clase de agregar
+                    break;
+                case 2:
+                    mostrar(" ", inicio); //hablamos a la clase mostrar para realizar la accion de mostrar cada dato que se a guardado
+                    break;
+                case 3:
+                    el(""); //llamamos las clase para que se pueda elimar los datos 
+                    break;
+                case 4:
+                    l.imprimir(l.dom(1));
+                    break;
+                case 5:
+                    bus();
+                    break;
+            }
+        } while (o != 6);
+
+    }
+
